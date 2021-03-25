@@ -70,4 +70,21 @@ vbgf_opt = nlminb(start=obj$par, obj=obj$fn, gr=obj$gr) #Fit model using nlminb 
   curve(fit_vonB[1,1]*(1-exp(-fit_vonB[2,1]*(x-fit_vonB[3,1]))),from=1,to=max(la.new$Age),lwd=3,add=T)}
 
 
+#Likelihood profiles
+Linf_prof<-tmbprofile(obj,"Linf",trace=FALSE)
+k_prof<-tmbprofile(obj,"k",trace=FALSE)
+t0_prof<-tmbprofile(obj,"t0",trace=FALSE)
+logSigma_prof<-tmbprofile(obj,"logSigma",trace=FALSE)
 
+#95% confidence intervals
+(CILinf=round(confint(Linf_prof)))
+(CIk=round(confint(k_prof),2))
+(CIt0=round(confint(t0_prof),2))
+(CIlogsigma=round(confint(logSigma_prof),2))
+
+par(mfrow=c(2,2)) #2x2 plot
+par(mar=c(4.2,4.1,1.1,1)) #Change margins of plot: bottom, left, top, and right margins
+plot(Linf_prof,xlab=expression("L"[infinity]), ylab="Value",cex=1.75,cex.axis=1.75,cex.lab=1.75)
+plot(k_prof,xlab="k",ylab="Value",cex=1.75,cex.axis=1.75,cex.lab=1.75)
+plot(t0_prof,xlab=expression("t"[0]), ylab="Value",cex=1.75,cex.axis=1.75,cex.lab=1.75)
+plot(logSigma_prof,ylab="Value",cex=1.75,cex.axis=1.75,cex.lab=1.75)
