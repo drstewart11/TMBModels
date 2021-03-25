@@ -5,12 +5,6 @@ library(devtools)
 install_github("kaskr/TMB_contrib_R/TMBhelper")
 library(TMBhelper)
 
-#Use length at age data constructed from the age-length key in Box 7.2.
-#Load the lengthage.RData object from your working directory and save it as object la.new. This must first be created and saved using the code in Box 7.2. If the file was saved to a different working directory, either change the working directory to the file's location or add the directory path to the lengthage.RData file (e.g., "G:/AFS Book Chapter/lengthage.RData")
-setwd("G:/AFS Book Chapter")
-la.new<-get(load("G:/AFS Book Chapter/lengthage.RData"))
-#head(la.new)
-#Use View(la.new) to view the entire data set and how it should be entered in a spreadsheet
 
 #Write C++ model template
 #Note: Comments follow //
